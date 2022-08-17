@@ -1,16 +1,5 @@
 
-
-
-"""
-TODO: 
-
-_ exclude obvious directories from being explored 
-_ catch exception cases
-"""
-
 import os
-
-
 
 
 def directory_walker(path):
