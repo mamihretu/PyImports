@@ -14,4 +14,4 @@
 walker.py:
 
 _ exclude obvious directories from being explored 
-_ catch exception cases
+_ catch possible exception cases
