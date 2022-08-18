@@ -64,9 +64,9 @@ def main():
 
 	map_list = map_all_modules(pre_pended_file_dict)
 
-	for mapping in map_list:
-		print(mapping)
-		print()
+	# for mapping in map_list:
+	# 	print(mapping)
+	# 	print()
 
 
 def pre_pend_file_chain(file_dict, library_name):
@@ -77,7 +77,9 @@ def pre_pend_file_chain(file_dict, library_name):
 		main_library_index = chain.index(library_name)
 		remaining_chain = chain[main_library_index + 1:]
 		chained_name = '.'.join(remaining_chain)
-		file_dict[file_path] = chained_name
+		chained_stripped_name = chained_name.rstrip(".py")
+		print(chained_name, "-->",chained_stripped_name)
+		file_dict[file_path] = chained_stripped_name
 
 	return file_dict
 
