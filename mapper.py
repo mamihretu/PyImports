@@ -1,4 +1,5 @@
 from walker import directory_walker
+from treelib import Node, Tree
 
 
 def map_all_modules(file_dict):
@@ -51,23 +52,6 @@ def read_imported_modules(file_path, file_name):
 
 		return module_map
 
-def main():
-	"""Build the tree connection of a single node """
-
-	# path = "C:\\Users\\abreham\\Desktop\\Django_projects\\asynchronous"
-	path = "C:\\Users\\abreham\\Desktop\\Environment\\django_environment\\Lib\\site-packages\\django"
-	# path = input("Please enter path:")
-
-	file_dict = directory_walker(path)
-	library_name = "django"
-	pre_pended_file_dict = pre_pend_file_chain(file_dict, library_name)
-
-	map_list = map_all_modules(pre_pended_file_dict)
-
-	# for mapping in map_list:
-	# 	print(mapping)
-	# 	print()
-
 
 def pre_pend_file_chain(file_dict, library_name):
 	""" prepend file chain"""
@@ -78,12 +62,73 @@ def pre_pend_file_chain(file_dict, library_name):
 		remaining_chain = chain[main_library_index + 1:]
 		chained_name = '.'.join(remaining_chain)
 		chained_stripped_name = chained_name.rstrip(".py")
-		print(chained_name, "-->",chained_stripped_name)
 		file_dict[file_path] = chained_stripped_name
 
 	return file_dict
 
 
+def make_dict(map_list):
+	""" make tree structure from dictionary list"""
+
+	tree_dict = {}
+
+	for dictionary in map_list:
+		"""Build the tree connection of a single node """
+		tree = Tree()
+		key = list(dictionary.keys())[0]
+		tree.create_node(key, key)  # root node
+		print(tree.root)
+		try:
+
+			for module in dictionary[key]:
+				tree.create_node(module, module,  parent=key)
+			tree_root = tree.root()
+			tree_dict[tree_root] = tree 
+		except:
+			pass
+	# print(tree_dict) 
+	return tree_dict
+
+
+
+def make_tree(tree_dict):
+	""" make tree structure from dictionary list"""
+ 
+	for upper_tree_root in tree_dict:
+		upper_tree = tree_dict[upper_tree_root]
+		upper_tree_leaf_set = set()
+		for leaf_node in upper_tree.all_nodes():
+			if leaf_node != upper_tree_root:
+				upper_tree_leaf_set.add(leaf_node)
+
+		for leaf_node in upper_tree_leaf_set:
+			if leaf_node in tree_dict:
+				lower_tree = tree_dict[leaf_node]
+				upper_tree.remove_node(leaf_node)
+
+				upper_tree.paste(upper_tree_root, lower_tree)
+
+	first_root = list(tree_dict.keys())[0]
+	final_tree = tree_dict[first_root]
+	final_tree.show()
+			
+
+def main():
+	
+
+	# path = "C:\\Users\\abreham\\Desktop\\Django_projects\\asynchronous"
+	path = "C:\\Users\\abreham\\Desktop\\Environment\\django_environment\\Lib\\site-packages\\django"
+	# path = input("Please enter path:")
+
+	file_dict = directory_walker(path)
+	library_name = "django"
+	pre_pended_file_dict = pre_pend_file_chain(file_dict, library_name)
+
+	map_list = map_all_modules(pre_pended_file_dict)
+	tree_dict = make_dict(map_list)
+	print(tree_dict)
+
+	make_tree(tree_dict)
 
 
 main()
