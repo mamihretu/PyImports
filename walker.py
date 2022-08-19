@@ -7,8 +7,8 @@ import os
 def directory_walker(path):
 	""" A function to walk all directories of the 
 	    codebase and put all python files into a list
-	    parameters: path : str
-	    result: Set(str)
+	    parameters -> path : str
+	    result -> dictionary of path to file mapping 
 	"""
 	try:
 		generator = os.walk(path)
@@ -38,14 +38,10 @@ def directory_walker(path):
 							directory_path_set.add(path)
 							new_generator = os.walk(path)
 							dfs(new_generator, file_dict)
-						else:
-							pass
 
 			return file_dict	
 
-		python_dict = dfs(generator, file_dict)
-
-		return python_dict
+		return dfs(generator, file_dict)
 
 	except:
 		pass
