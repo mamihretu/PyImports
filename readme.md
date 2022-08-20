@@ -6,11 +6,6 @@ Large library structure explorer
 Libraries Used
 -----
 
-* SDL2 for 2-D display
-* cv2 for feature extraction
-* pangolin for 3-D display
-* g2opy for optimization (soon!)
-
 
 Usage
 -----
