@@ -1,15 +1,16 @@
-Large library structure explorer
+PyImports
 -----
+Python import dependency visualizer to aid in understanding module architecture 
 
 
 
 Libraries Used
 -----
 
-* SDL2 for 2-D display
-* cv2 for feature extraction
-* pangolin for 3-D display
-* g2opy for optimization (soon!)
+* GraphViz(stand alone application that needs to be downloaded separately)
+* networkx
+* pydot
+
 
 
 Usage
@@ -31,29 +32,9 @@ Usage
 TODO
 -----
 
+* make package more self contained by implementing a limited graphics library to replace graphviz
 
-walker.py:
-
-_ exclude obvious directories from being explored(DONE)
-_ catch possible exception cases
-
-
-mapper.py:
-
-_ check if chained imports need to be split
-_ use new tree data structure 
-
-
-tree.py:
-
-_ implement new tree data structure 
-
-
-
-
-DONE
------
-
+* check and include import dependencies written in other languages
 
 
 
