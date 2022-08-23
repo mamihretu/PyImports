@@ -1,6 +1,6 @@
 PyImports
 -----
-Python import dependency visualizer to aid in understanding module architecture 
+Python import dependency visualizer to aid in understanding of module architecture 
 
 
 
@@ -32,9 +32,9 @@ Usage
 TODO
 -----
 
-_ make package more self contained by implementing a limited graphics library to replace graphviz
+* make package more self contained by implementing a limited graphics library to replace graphviz
 
-_ check and include import dependencies written in other languages
+* check and include import dependencies written in other languages
 
 
 
