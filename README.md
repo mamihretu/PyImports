@@ -34,12 +34,15 @@ positional arguments:
 
 optional arguments:
   -h, --help                             show this help message and exit
-  -v, --verbose                          be more verbose (-vv, -vvv for more verbosity)
-  -o file                                write output to 'file'
-  --display PROGRAM                      program to use to display the graph (png or svg file depending on the T parameter)
-  --noshow                               don't call external program to display graph
-  --reverse                              draw arrows to (instead of from) imported modules
-  --rankdir                              set the direction of the graph, legal values are TB (default, imported modules above importing modules), BT (opposite direction of TB), LR (left-to-right) and RL (right-to-left)
+  -s, --shape                            display nodes in specified shape:'box', 'polygon', 'ellipse', 'oval', 'circle', 'egg', 'triangle', 'exagon', 'star'")
+  -st, --style                           display edges in specified style:'filled', 'rounded', 'dashed', 'dotted', 'bold'
+  -nc, --ncolor                          display nodes in specified color:'blue', 'black', 'red', '#db8625', 'green', 'gray', 'cyan', '#ed125b'
+  -ec, --ecolor                          display edges in specified color: 'blue', 'black', 'red', '#db8625', 'green', 'gray', 'cyan', '#ed125b'
+  -o                                     write output to 'file'
+  --display                              program to use to display the graph
+  --noshow, --no-show                    don't call external program to display graph
+  --reverse'                             draw arrows to (instead of from) imported modules
+  --rankdir                              set the direction of the graph, choices= TB (default, imported modules above importing modules), BT (opposite direction of TB)                                          LR (left-to-right) and RL (right-to-left)")
   
 ```
 
