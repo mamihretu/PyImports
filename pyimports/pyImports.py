@@ -32,12 +32,7 @@ def parse_args():
 
 
 
-path = "C:\\Users\\abreham\\Desktop\\Django_projects\\asynchronous"
-library_name = "asynchronous"
-# path = "C:\\Users\\abreham\\Desktop\\Environment\\django_environment\\Lib\\site-packages\\django"
-# library_name = "django"
 
-print(parse_args())
 
 
 # networkx_graph = Networkx_graph(path, library_name)
